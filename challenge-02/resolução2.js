@@ -41,9 +41,9 @@ Crie uma função com as seguintes características:
 function multiplicatres(x, y, z){
     if(x == undefined || y == undefined || z == undefined){
         return "Preencha todos os valores corretamente!";
-    }else{
-        return (x*y*z)+2
     }
+    return (x*y*z)+2
+    
 }
 
 // Invoque a função criada acima, passando só dois números como argumento.
@@ -68,13 +68,13 @@ Crie uma função com as seguintes características:
 6. E ainda, se nenhuma das condições acima forem atendidas, retorne `null`.
 */
 function testa(x, y, z){
-    if((x != null)&&(y != null)&&(z != null)){
+    if((x != undefined)&&(y != undefined)&&(z != undefined)){
         return (x+y)/z;
-    }else if((x == null)&&(y == null)&&(z == null)){
+    }else if((x == undefined)&&(y == undefined)&&(z == undefined)){
         return false;
-    }else if((x != null)&&(y != null)){
+    }else if((x != undefined)&&(y != undefined)){
         return x+y;
-    }else if(x != null){
+    }else if(x != undefined){
         return x;
     }else{
         return null;
