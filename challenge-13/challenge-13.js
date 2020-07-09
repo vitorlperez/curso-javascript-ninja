@@ -162,18 +162,16 @@ objeto desse array, e adicione a frase abaixo na propriedade `estado`:
 Atribua o novo array a uma variável chamada `map`.
 */
 var map = newBrasil.map(function(item){
-    return item;
-}).forEach(function(item){
-    item['id'] += 1;
-    item['estado'] = item['estado'] + ' pertence ao Brasil';
-})
-
+    item.id ++;
+    item.estado += ' pertence ao Brasil.';
+    return item; 
+});
 /*
 Mostre no console o array criado acima:
 */
 console.log( '\nnewBrasil agora com mais informações:' );
-console.log(newBrasil)
-console.log('\n'+map)
+console.log(map)
+
 
 /*
 Filtre o array criado acima, retornando somente os estados que tiverem
