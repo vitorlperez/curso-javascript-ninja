@@ -1,9 +1,7 @@
 (function(){
     'use strict';
-    var obj = {
-        prop1:'prop1',
-        prop1: 'prop2',
-        prop3: 'prop3'
-    }    
-    console.log(obj)
+    var str = new String('Vitor Luiz Lage Perez de Rosario')
+    console.log(str.charAt(0))
+    console.log(str.concat(' Filho'))
+    console.log(str.replace('Vitor', 'Alexandre'))
 })();
