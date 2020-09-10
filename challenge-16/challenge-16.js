@@ -1,5 +1,6 @@
 (function(){
     'use strict';
+
 /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
@@ -54,29 +55,18 @@ O resultado final deve ficar mais ou menos assim:
 */
 console.log( '\nMeus amigos:' );
 var nomes = ['vitor', 'renato', 'raquel', 'bruna', 'anne'];
-nomes = nomes.reverse()
-var newNomes = nomes.join(', ');
-newNomes = newNomes.replace(', ',' e ');
-nomes = newNomes.split(', ')
-nomes = nomes.reverse()
-nomes = nomes.join(', ')
-console.log(nomes)
-
+var phrase = nomes.reduce(function(acumulado, atual, index){
+    var separator = nomes.length - 1 === index ? ' e ' : ', ';
+    return acumulado + separator + atual;
+})
+console.log(phrase)
 /*
 Usando o replace(), faça a string "Roberto" virar "Roberta".
 Mostre o resultado no console.
 */
 console.log( '\nEra "Roberto", agora é:' );
 var rob = 'Roberto';
-rob = rob.split('')
-console.log(rob)
-var reverso = rob.reverse().join('')
-console.log(reverso)
-reverso = reverso.replace('o', 'a');
-console.log(reverso)
-rob = reverso.split('')
-rob = rob.reverse().join('')
-console.log(rob)
+console.log(rob.replace('to', 'ta'))
 /*
 Mostre no console a parte "nando" da string "Fernando". Use o método que
 faz a busca do final para o início da string.
@@ -94,10 +84,10 @@ de qualquer tamanho, escrito de qualquer forma.
 Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
 console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-var myName = 'Vitor'
-myName = myName.split('')
-for(var i = 0; i < myName.length; i++){
-    i % 2 === 0 ? myName[i] = myName[i].toUpperCase() : null;
+var myName = 'Vitor';
+var myNewName = [];
+for(var i = 0, len = myName.length; i < len; i++){
+    myNewName.push(i % 2 === 0 ? myName[i].toUpperCase() : myName[i].toLowerCase());
 }
-console.log(myName)
+console.log(myNewName.join(''))
 })();
