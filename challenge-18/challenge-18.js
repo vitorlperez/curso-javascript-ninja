@@ -1,3 +1,5 @@
+(function(){
+    'use strict';
 /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
@@ -15,7 +17,14 @@ eles! Use um console.log para cada CPF.
 - "101.123-131x32"
 */
 console.log( 'Limpando CPFs:' );
-// ?
+function cleanCPF(numero){
+    var novos_numeros = numero.match
+    return numero.replace(/[^\d]/g, '')
+}
+console.log(cleanCPF("049-214 3421-1"))
+console.log(cleanCPF("210.458.522-05"))
+console.log(cleanCPF("735 500 794 - 22"))
+console.log(cleanCPF("101.123-131x32"))
 
 /*
 Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
@@ -23,7 +32,10 @@ Ex.: "999.999.999-99"
 Mostre o resultado no console.
 */
 console.log( '\nFormatando CPFs corretamente:' );
-// ?
+console.log(cleanCPF("049-214 3421-1").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'))
+console.log(cleanCPF("210.458.522-05").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'))
+console.log(cleanCPF("735 500 794 - 22").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'))
+console.log(cleanCPF("101.123-131x32").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'))
 
 /*
 Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
@@ -36,8 +48,10 @@ Mostre no console o resultado do match para a frase:
 O resultado deve ser:
 ["junho", "julho"]
 */
+var regex = /j\w{4}\s/g
+var frase = "Os meses de janeiro, junho e julho começam com a letra j."
 console.log( '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":' );
-// ?
+console.log(frase.match(regex));
 
 /*
 Crie uma expressão regular que faça o match com a abertura de uma tag
@@ -48,8 +62,10 @@ Use o método match e faça o teste com a marcação abaixo:
 O resultado deve ser:
 ["<div>", "<section>", "<blockquote>"]
 */
+var regexHTML = /<\w+>/g;
+frase = "<div><section><blockquote>Texto <img /></blockquote></section></div>";
 console.log( '\nMatch com a abertura de uma tag HTML:' );
-// ?
+console.log(frase.match(regexHTML));
 
 /*
 Crie uma expressão regular que faça o match com uma tag HTML vazia, casando
@@ -60,8 +76,10 @@ Use o método match e faça o teste com a marcação abaixo:
 O resultado deve ser:
 ["<li></li>", "<li></li>", "<span></span>"]
 */
+regexHTML = /<\w+><\/\w+>/g;
+frase = "<div><ul><li></li><li></li><li><span></span></li></ul></div>";
 console.log( '\nMatch com tags HTML vazias (abertura e fechamento da tag):' );
-// ?
+console.log(frase.match(regexHTML));
 
 /*
 Vamos complicar um pouco agora :D
@@ -85,5 +103,10 @@ Uma dica: faça o match aos poucos. Para facilitar o teste, use o site
 https://regex101.com/#javascript e verifique se as capturas estão
 corretas, para depois aplicar no código ;)
 */
+regexHTML = /(<\w+>)([^<]+)(<\/\w+>)/g
+frase = "<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>"
 console.log( '\nFazer replace dos textos das tags:' );
-// ?
+console.log(frase.replace(regexHTML, function(regex, marc1, texto, marc2){
+    return  marc1+'O texto dentro da tag ' + '\"' + marc1.replace(/<(\w+)>/, '$1') + '\"' + ' é ' + '\"' + texto + '\"' + marc2 + '\n';
+}))
+})();
